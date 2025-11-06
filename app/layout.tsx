@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { Button } from "@/components/animate-ui/primitives/buttons/button";
-
+import { Analytics } from "@vercel/analytics/next";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -65,8 +65,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // JSON-LD structured data for better search engine understanding.
-  // NOTE: Replace SITE_URL with your production domain.
   const SITE_URL = "https://whatsapp-link-gen.vercel.app";
   const jsonLd = JSON.stringify({
     "@context": "https://schema.org",
@@ -78,6 +76,7 @@ export default function RootLayout({
   });
   return (
     <html lang="en">
+      <Analytics />
       <head>
         <script
           key="json-ld"
